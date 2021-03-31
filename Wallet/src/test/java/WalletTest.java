@@ -52,4 +52,21 @@ public class WalletTest {
 
         assertEquals(expectedValue, actualValue, 0.00001);
     }
+
+    @Test
+    public void testForReturningTotalBalanceWhenPreferredCurrencyIsDollars() {
+        double actualValue;
+        double expectedValue = 4;
+        String preferredCurrency = "Dollars";
+        String currencyType1 = "Dollar";
+        String currencyType2 = "Rupees";
+        double currencyValue1 = 3;
+        double currencyValue2 = 74.85;
+        Currency dollar = new Currency(currencyType1,currencyValue1);
+        Currency rupees = new Currency(currencyType2,currencyValue2);
+
+        actualValue = WalletFunctionality.returnTotalBalance(preferredCurrency, dollar, rupees);
+
+        assertEquals(expectedValue, actualValue, 0.00001);
+    }
 }
