@@ -6,4 +6,12 @@ public class WalletFunctionality {
         }
         return false;
     }
+
+    public static double returnTotalBalance(String preferredCurrency, Currency dollar, Currency rupees) {
+        if(preferredCurrency == "Rupees") {
+            return dollar.getCurrencyValue() * 74.85 + rupees.getCurrencyValue();
+        }
+        else
+            return dollar.getCurrencyValue() + rupees.getCurrencyValue()/74.85;
+    }
 }
