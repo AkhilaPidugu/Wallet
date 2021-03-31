@@ -11,4 +11,8 @@ public class Currency {
     public double getCurrencyValue() {
         return currencyValue;
     }
+
+    public void setCurrencyValue(double v) {
+        this.currencyValue = v;
+    }
 }

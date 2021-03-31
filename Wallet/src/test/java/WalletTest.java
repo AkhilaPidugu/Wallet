@@ -37,6 +37,26 @@ public class WalletTest {
     }
 
     @Test
+    public void testForReturningTotalBalanceAfterDepositingCurrencyAsDollar() {
+        double actualValue;
+        double expectedValue = 5;
+        String preferredCurrency = "Dollars";
+        String currencyType1 = "Dollar";
+        String currencyType2 = "Rupees";
+        String currencyType3 = "Dollar";
+        double currencyValue1 = 3;
+        double currencyValue2 = 74.85;
+        double currencyValue3 = 1;
+        Currency dollar = new Currency(currencyType1,currencyValue1);
+        Currency rupees = new Currency(currencyType2,currencyValue2);
+        WalletFunctionality.depositCurrency(currencyType3, currencyValue3, dollar, rupees);
+
+        actualValue = WalletFunctionality.returnTotalBalance(preferredCurrency, dollar, rupees);
+
+        assertEquals(expectedValue, actualValue, 0.00001);
+    }
+    
+    @Test
     public void testForReturningTotalBalanceWhenPreferredCurrencyIsRupees() {
         double actualValue;
         double expectedValue = 299.40;

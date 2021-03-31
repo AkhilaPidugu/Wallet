@@ -14,4 +14,12 @@ public class WalletFunctionality {
         else
             return dollar.getCurrencyValue() + rupees.getCurrencyValue()/74.85;
     }
+
+    public static void depositCurrency(String currencyType, double currencyValue, Currency dollar, Currency rupees) {
+        if(currencyType == "Dollar") {
+            dollar.setCurrencyValue(dollar.getCurrencyValue() + currencyValue);
+        }
+        else
+            rupees.setCurrencyValue(rupees.getCurrencyValue() + currencyValue);
+    }
 }
