@@ -22,4 +22,11 @@ public class WalletFunctionality {
         else
             rupees.setCurrencyValue(rupees.getCurrencyValue() + currencyValue);
     }
+
+    public static void withdrawCurrency(String preferredCurrency, double withdrawAmount, Currency dollar, Currency rupees) {
+        if(preferredCurrency == "Dollars"){
+            if(dollar.getCurrencyValue()>=withdrawAmount)
+                dollar.setCurrencyValue(dollar.getCurrencyValue()-withdrawAmount);
+        }
+    }
 }

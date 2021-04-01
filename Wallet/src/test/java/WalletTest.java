@@ -74,7 +74,7 @@ public class WalletTest {
 
         assertEquals(expectedValue, actualValue, 0.00001);
     }
-    
+
     @Test
     public void testForReturningTotalBalanceWhenPreferredCurrencyIsRupees() {
         double actualValue;
@@ -107,5 +107,22 @@ public class WalletTest {
         actualValue = WalletFunctionality.returnTotalBalance(preferredCurrency, dollar, rupees);
 
         assertEquals(expectedValue, actualValue, 0.00001);
+    }
+
+    @Test
+    public void testForWithdrawingCurrencyInDollarsWithSufficientBalance() {
+        double expectedValue = 4;
+        String preferredCurrency = "Dollars";
+        double withdrawAmount = 1;
+        String currencyType1 = "Dollar";
+        String currencyType2 = "Rupees";
+        double currencyValue1 = 5;
+        double currencyValue2 = 74.85;
+        Currency dollar = new Currency(currencyType1,currencyValue1);
+        Currency rupees = new Currency(currencyType2,currencyValue2);
+
+        WalletFunctionality.withdrawCurrency(preferredCurrency,withdrawAmount,dollar,rupees);
+
+        assertEquals(expectedValue,dollar.getCurrencyValue());
     }
 }
