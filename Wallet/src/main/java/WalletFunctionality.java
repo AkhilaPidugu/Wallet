@@ -24,8 +24,8 @@ public class WalletFunctionality {
     }
 
     public static void withdrawCurrency(String preferredCurrency, double withdrawAmount, Currency dollar, Currency rupees) {
-        if (returnTotalBalance("Dollar", dollar, rupees) > withdrawAmount) {
-            if (preferredCurrency == "Dollars") {
+        if (preferredCurrency == "Dollars") {
+            if (returnTotalBalance("Dollar", dollar, rupees) > withdrawAmount) {
                 if (dollar.getCurrencyValue() >= withdrawAmount)
                     dollar.setCurrencyValue(dollar.getCurrencyValue() - withdrawAmount);
                 else {
@@ -36,9 +36,17 @@ public class WalletFunctionality {
                 }
             }
         }
-        else {
+        else if(preferredCurrency == "Rupees") {
+            if (returnTotalBalance("Rupees", dollar, rupees) > withdrawAmount) {
                 if (rupees.getCurrencyValue() >= withdrawAmount)
                     rupees.setCurrencyValue(rupees.getCurrencyValue() - withdrawAmount);
+                else {
+                    withdrawAmount =withdrawAmount- rupees.getCurrencyValue();
+                    rupees.setCurrencyValue(0);
+                    double remAmount = returnTotalBalance("Rupees", dollar, rupees)-withdrawAmount;
+                    dollar.setCurrencyValue(remAmount/74.85);
+                }
             }
         }
+    }
 }
