@@ -28,5 +28,9 @@ public class WalletFunctionality {
             if(dollar.getCurrencyValue()>=withdrawAmount)
                 dollar.setCurrencyValue(dollar.getCurrencyValue()-withdrawAmount);
         }
+        else{
+            if(rupees.getCurrencyValue()>=withdrawAmount)
+                rupees.setCurrencyValue(rupees.getCurrencyValue()-withdrawAmount);
+        }
     }
 }
